@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    color: #E8E6E3;
+    background: #191C1D;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    color: #E8E6E3;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.navbar a {
+    font-size: 18px;
+    color: #E8E6E3;
+    text-decoration: none;
+    font-weight: 400;
+    margin-left: 35px;
+    transition: .3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #195090;
+}
+
+
+.home {
+    height: 100vh;
+    background: url('home3.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.home-content {
+    max-width: 600px;
+    margin-top: -50px;
+}   
+
+.home-content h1{
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.2;
+}   
+
+
+.home-content h3 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #195090;
+}   
+
+.home-content p {
+    font-size: 16px;
+    margin: 20px 0 40px;
+}   
+
+.home-content btn-box {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    width: 445px;
+    height: 50px;
+}   
+
+.btn-box a {
+    margin-top: -40px;
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 1O0%;
+    background: #195090;
+    border: 4px solid #195090;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #191C1D;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}   
+
+.btn-box a:hover {
+color: #195090;
+}   
+
+
+.btn-box a:nth-child(2) {
+    background: transparent;
+    color: #195090;
+}   
+
+.btn-box a:nth-child(2):hover {
+    color: #191C1D;
+}   
+
+.btn-box a:nth-child(2)::before {
+    background: #195090;
+}   
+
+.btn-box a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #191C1D;
+    z-index: -1;
+    transition: .5s;
+}  
+
+.btn-box a:hover:before {
+    width: 100%;
+}  
+
+.home-sci {
+    position: absolute;
+    bottom: 40px;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+}   
+
+.home-sci a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #195090;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #195090;
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+    transition: .2s;
+}   
+
+.home-sci a:hover {
+    color: #191C1D;
+}
+
+.home-sci a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #195090;
+    z-index: -1;
+    transition: .5s;
+}
+
+.home-sci a:hover::before {
+    width: 100%;
+}  
+
+.home-imgHover {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    width: 500px;
+    height: 100%;
+    background: transparent;
+    transition: 1s;
+} 
+
+.home-imgHover:hover {
+    background: #191C1D;
+    opacity: .8;
+} 
+
+.skills {
+    padding: 100px 10%;
+    color: #E8E6E3;
+    text-align: center;
+}
+
+.skills h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #195090;
+}
+
+.skills p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.skills ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.skills ul li {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.cards {
+    padding: 100px 10%;
+    color: #E8E6E3;
+    text-align: center;
+}
+
+.cards h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #195090;
+}
+
+.cards p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.card-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.card-gallery img {
+    width: 100%;
+    max-width: 300px;
+    border: 4px solid #195090;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-gallery img:hover {
+    transform: scale(1.1) rotate(2deg);
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+section {
+    margin-top: 60px;
+}
+
+.cv {
+    padding: 100px 10%;
+    color: #E8E6E3;
+}
+
+.cv h1 {
+    font-size: 48px;
+    color: #195090;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cv-section {
+    margin-bottom: 60px;
+}
+
+.cv-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #195090;
+    border-bottom: 2px solid #195090;
+    display: inline-block;
+}
+
+.cv-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cv-section ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.cv-section p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cards h1 {
+    font-size: 38px; /* Réduisez la taille selon vos besoins */
+    margin-bottom: 20px;
+    color: #195090;
+}
+
+#contact {
+    padding: 50px 10%;
+    color: #E8E6E3;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+}
+
+#contact form label {
+    margin: 10px 0 5px;
+}
+
+#contact form input,
+#contact form textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #195090;
+    border-radius: 5px;
+}
+
+#contact form button {
+    background: #195090;
+    color: #E8E6E3;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#contact form button:hover {
+    background: #E8E6E3;
+    color: #195090;
+}
+
+.card-item {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card-item p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #E8E6E3;
+    font-weight: 400;
+}
+
+#contact {
+    margin-top: 30px; /* Ajustez cet espace selon vos besoins */
+    color: #E8E6E3;
+}
+
+#contact h2 {
+    font-size: 24px;
+    color: #195090;
+}
+
+#contact p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+#contact a {
+    color: #E8E6E3;
+    text-decoration: none;
+}
+
+#contact a:hover {
+    text-decoration: underline;
+}
