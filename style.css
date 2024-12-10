@@ -275,14 +275,22 @@ section {
 
 .cv {
     padding: 100px 10%;
-    color: #E8E6E3;
+    text-align: center;
 }
 
+/*
 .cv h1 {
     font-size: 48px;
+    margin-bottom: 20px;
     color: #195090;
-    text-align: center;
-    margin-bottom: 30px;
+} */
+
+.cv-image {
+    max-width: 75%; /* Adapte l'image à la largeur de l'écran */
+    height: auto; /* Conserve les proportions */
+    /* border: 2px solid #195090; Ajoute une bordure */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Effet d'ombre */
 }
 
 .cv-section {
@@ -393,4 +401,56 @@ section {
 
 #contact a:hover {
     text-decoration: underline;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+    max-width: 500px; /* Largeur maximale */
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Slides */
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Boutons de navigation */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    user-select: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Transition */
+.fade {
+    animation: fadeEffect 0.5s;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0.4} 
+    to {opacity: 1}
 }

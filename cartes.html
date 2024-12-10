@@ -19,33 +19,107 @@
     <section class="cards">
         <div class="card-gallery">
             <div class="card-item">
+                <a href="Arcti.png" target="_blank">
+                    <img src="Arcti.png" alt="Infographie sur la 1ère guerre mondiale">
+                </a>
+                <p>2023 - L’accessibilité aux ressources en Arctique</p>
+            </div>
+
+            <!-- Premier slideshow -->
+            <div id="slideshow1" class="card-item">
+                <div class="slideshow-container">
+                    <div class="slide fade">
+                        <a href="Elec1.png" target="_blank">
+                            <img src="Elec1.png" alt="Page 1">
+                        </a>
+                    </div>
+                    <div class="slide fade">
+                        <a href="Elec2.png" target="_blank">
+                            <img src="Elec2.png" alt="Page 2">
+                        </a>
+                    </div>
+                    <div class="slide fade">
+                        <a href="Elec3.png" target="_blank">
+                            <img src="Elec3.png" alt="Page 3">
+                        </a>
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+                    <p>2023 - Carte des élections présidentielles</p>
+                </div>
+            </div>
+
+            <!-- Deuxième slideshow -->
+            <div id="slideshow2" class="card-item">
+                <div class="slideshow-container">
+                    <div class="slide fade">
+                        <a href="DM5C1.png" target="_blank">
+                            <img src="DM5C1.png" alt="Infographie sur la 1ère guerre mondiale">
+                        </a>                    </div>
+                    <div class="slide fade">
+                        <a href="DM5C2.png" target="_blank">
+                            <img src="DM5C2.png" alt="Infographie sur la 1ère guerre mondiale">
+                        </a>                      </div>
+                    <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+                    <p>2023 - Ventilation d'habitants dans les bâtiments</p>
+                </div>
+            </div>
+
+            <div class="card-item">
                 <a href="carte1.png" target="_blank">
                     <img src="carte1.png" alt="Infographie sur la 1ère guerre mondiale">
                 </a>
-                <p>Infographie sur la 1ère guerre mondiale</p>
+                <p>2024 - Infographie sur la 1ère guerre mondiale</p>
             </div>
         
             <div class="card-item">
                 <a href="carte2.png" target="_blank">
                     <img src="carte2.png" alt="Analyse spatiale des flux migratoires">
                 </a>
-                <p>Carte bivariée sur l'accessilité au très haut débit</p>
+                <p>2024 - Carte bivariée sur l'accessilité au très haut débit</p>
             </div>
         
             <div class="card-item">
                 <a href="carte3.png" target="_blank">
                     <img src="carte3.png" alt="Cartographie des zones inondables">
                 </a>
-                <p>Utilisation de données standardisées GTFS</p>
+                <p>2024 - Utilisation de données standardisées GTFS</p>
             </div>
         
             <div class="card-item">
                 <a href="carte4.png" target="_blank">
                     <img src="carte4.png" alt="Planification urbaine d'une métropole">
                 </a>
-                <p>Carte en anamorphose ou "Cartogramme"</p>
+                <p>2024 - Carte en anamorphose ou "Cartogramme"</p>
             </div>
         </div>
     </section>
+    <script>
+        let slideIndexes = []; // Stocke l'index actuel de chaque slideshow
+        let slideContainers = document.querySelectorAll(".slideshow-container");
+
+        // Initialiser les slideshows
+        slideContainers.forEach((container, index) => {
+            slideIndexes[index] = 0; // Initialiser l'index du slideshow
+            showSlides(0, index); // Afficher la première slide de chaque slideshow
+        });
+
+        // Fonction pour naviguer entre les slides
+        function plusSlides(n, slideshowIndex) {
+            showSlides(slideIndexes[slideshowIndex] += n, slideshowIndex);
+        }
+
+        // Fonction pour afficher les slides
+        function showSlides(n, slideshowIndex) {
+            let slides = slideContainers[slideshowIndex].querySelectorAll(".slide");
+            if (n >= slides.length) { slideIndexes[slideshowIndex] = 0; }
+            if (n < 0) { slideIndexes[slideshowIndex] = slides.length - 1; }
+            slides.forEach((slide, i) => {
+                slide.style.display = i === slideIndexes[slideshowIndex] ? "block" : "none";
+            });
+        }
+    </script>
+
 </body>
 </html>
