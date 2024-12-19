@@ -58,7 +58,7 @@ body {
 
 .home-content {
     max-width: 600px;
-    margin-top: 0px;
+    margin-top: 50px;
 }   
 
 .home-content h1{
@@ -76,7 +76,7 @@ body {
 
 .home-content p {
     font-size: 16px;
-    margin: 20px 0 40px;
+    margin: 20px 0 10px;
 }   
 
 .home-content btn-box {
@@ -192,7 +192,7 @@ color: #195090;
     position: absolute;
     top: 0;
     right: 30px;
-    width: 500px;
+    width: 700px;
     height: 100%;
     background: transparent;
     transition: 1s;
@@ -258,7 +258,7 @@ color: #195090;
 .card-gallery img {
     width: 100%;
     max-width: 300px;
-    border: 4px solid #195090;
+    /* border: 4px solid #195090; */
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -266,7 +266,12 @@ color: #195090;
 .card-gallery img:hover {
     transform: scale(1.1) rotate(2deg);
     transition: transform 0.3s ease;
+    border: 4px solid #195090;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox img:hover {
+    transform: none; /* Désactive l’effet au survol dans le zoom */
 }
 
 section {
@@ -453,4 +458,120 @@ section {
 @keyframes fadeEffect {
     from {opacity: 0.4} 
     to {opacity: 1}
+}
+
+.cv {
+    padding: 100px 10%;
+    text-align: center;
+    position: relative; /* Pour gérer la position du bouton */
+}
+
+.download-container {
+    margin-top: 20px;
+    text-align: center; /* Centre le bouton horizontalement */
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #E8E6E3;
+    background-color: #195090;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #00abf0;
+}
+
+.fullscreen {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000; /* Au-dessus des autres éléments */
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreen img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+/* Conteneur de la Lightbox */
+.lightbox {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Fond sombre */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image en mode Lightbox */
+.lightbox img {
+    object-fit: contain; /* Conserve les proportions */
+    width: auto; /* Adapte automatiquement */
+    height: auto; /* Adapte automatiquement */
+    max-width: 90%; /* Limite la taille en largeur */
+    max-height: 90%; /* Limite la taille en hauteur */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+/* Navigation dans la Lightbox */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    z-index: 1100;
+}
+
+#prev-lightbox {
+    left: 20px;
+}
+
+#next-lightbox {
+    right: 20px;
+}
+
+/* Bouton de fermeture */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.lightbox img:hover {
+    transform: scale(1.05); /* Zoom fluide au survol */
+    border: 0px solid #195090;
 }

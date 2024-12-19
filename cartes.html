@@ -18,30 +18,32 @@
 
     <section class="cards">
         <div class="card-gallery">
+
+            <!-- Conteneur Lightbox -->
+        <div id="lightbox" class="lightbox">
+            <span id="close-lightbox" class="close-btn">&times;</span>
+            <img id="lightbox-image" src="" alt="Zoomed Image">
+            <a id="prev-lightbox" class="lightbox-nav">&#10094;</a>
+            <a id="next-lightbox" class="lightbox-nav">&#10095;</a>
+        </div>
+
+            <!-- Image classique -->
             <div class="card-item">
-                <a href="Arcti.png" target="_blank">
-                    <img src="Arcti.png" alt="Infographie sur la 1ère guerre mondiale">
-                </a>
-                <p>2023 - L’accessibilité aux ressources en Arctique</p>
+                <img src="Arcti.png" alt="L'accessibilité aux ressources en Arctique" class="zoomable">
+                <p>2023 - L'accessibilité aux ressources en Arctique</p>
             </div>
 
             <!-- Premier slideshow -->
             <div id="slideshow1" class="card-item">
                 <div class="slideshow-container">
                     <div class="slide fade">
-                        <a href="Elec1.png" target="_blank">
-                            <img src="Elec1.png" alt="Page 1">
-                        </a>
+                        <img src="Elec1.png" alt="Page 1" onclick="openFullscreen('Elec1.png')" class="zoomable">
                     </div>
                     <div class="slide fade">
-                        <a href="Elec2.png" target="_blank">
-                            <img src="Elec2.png" alt="Page 2">
-                        </a>
+                        <img src="Elec2.png" alt="Page 2" class="zoomable">
                     </div>
                     <div class="slide fade">
-                        <a href="Elec3.png" target="_blank">
-                            <img src="Elec3.png" alt="Page 3">
-                        </a>
+                        <img src="Elec3.png" alt="Page 3" class="zoomable">
                     </div>
                     <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
@@ -53,73 +55,130 @@
             <div id="slideshow2" class="card-item">
                 <div class="slideshow-container">
                     <div class="slide fade">
-                        <a href="DM5C1.png" target="_blank">
-                            <img src="DM5C1.png" alt="Infographie sur la 1ère guerre mondiale">
-                        </a>                    </div>
+                            <img src="DM5C1.png" alt="Infographie sur la 1ère guerre mondiale" class="zoomable">
+                    </div>
                     <div class="slide fade">
-                        <a href="DM5C2.png" target="_blank">
-                            <img src="DM5C2.png" alt="Infographie sur la 1ère guerre mondiale">
-                        </a>                      </div>
+                            <img src="DM5C2.png" alt="Infographie sur la 1ère guerre mondiale" class="zoomable">
+                    </div>
                     <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
                     <p>2023 - Ventilation d'habitants dans les bâtiments</p>
                 </div>
             </div>
 
+            <!-- Autres cartes -->
             <div class="card-item">
-                <a href="carte1.png" target="_blank">
-                    <img src="carte1.png" alt="Infographie sur la 1ère guerre mondiale">
-                </a>
+                    <img src="carte1.png" alt="Infographie sur la 1ère guerre mondiale" class="zoomable">
                 <p>2024 - Infographie sur la 1ère guerre mondiale</p>
             </div>
         
             <div class="card-item">
-                <a href="carte2.png" target="_blank">
-                    <img src="carte2.png" alt="Analyse spatiale des flux migratoires">
-                </a>
-                <p>2024 - Carte bivariée sur l'accessilité au très haut débit</p>
+                    <img src="carte2.png" alt="Analyse spatiale des flux migratoires" class="zoomable">
+                <p>2024 - Carte bivariée sur l'accessibilité au très haut débit</p>
             </div>
         
             <div class="card-item">
-                <a href="carte3.png" target="_blank">
-                    <img src="carte3.png" alt="Cartographie des zones inondables">
-                </a>
+                    <img src="carte3.png" alt="Cartographie des zones inondables" class="zoomable">
                 <p>2024 - Utilisation de données standardisées GTFS</p>
             </div>
         
             <div class="card-item">
-                <a href="carte4.png" target="_blank">
-                    <img src="carte4.png" alt="Planification urbaine d'une métropole">
-                </a>
+                    <img src="carte4.png" alt="Planification urbaine d'une métropole" class="zoomable">
                 <p>2024 - Carte en anamorphose ou "Cartogramme"</p>
             </div>
+
+            <!-- Mode plein écran -->
+            <div id="fullscreen-container" class="fullscreen">
+                <img id="fullscreen-image" src="" alt="Fullscreen Image">
+                <span id="close-fullscreen" class="close-btn">&times;</span>
+            </div> 
         </div>
     </section>
+
+    <!-- Script -->
     <script>
-        let slideIndexes = []; // Stocke l'index actuel de chaque slideshow
-        let slideContainers = document.querySelectorAll(".slideshow-container");
+        // Variables globales pour Lightbox
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightbox-image");
+        const closeLightbox = document.getElementById("close-lightbox");
+        const prevLightbox = document.getElementById("prev-lightbox");
+        const nextLightbox = document.getElementById("next-lightbox");
 
-        // Initialiser les slideshows
-        slideContainers.forEach((container, index) => {
-            slideIndexes[index] = 0; // Initialiser l'index du slideshow
-            showSlides(0, index); // Afficher la première slide de chaque slideshow
-        });
+        let currentImageIndex = 0;
+        let images = [];
 
-        // Fonction pour naviguer entre les slides
-        function plusSlides(n, slideshowIndex) {
-            showSlides(slideIndexes[slideshowIndex] += n, slideshowIndex);
+        // Gestion des slideshows
+        let slideIndexes = [];
+        const slideshows = document.querySelectorAll(".slideshow-container");
+
+        function initializeSlideshows() {
+            slideshows.forEach((slideshow, index) => {
+                slideIndexes[index] = 0;
+                showSlides(0, index);
+            });
         }
 
-        // Fonction pour afficher les slides
-        function showSlides(n, slideshowIndex) {
-            let slides = slideContainers[slideshowIndex].querySelectorAll(".slide");
-            if (n >= slides.length) { slideIndexes[slideshowIndex] = 0; }
-            if (n < 0) { slideIndexes[slideshowIndex] = slides.length - 1; }
+        function plusSlides(n, slideshowIndex) {
+            slideIndexes[slideshowIndex] += n;
+            showSlides(slideIndexes[slideshowIndex], slideshowIndex);
+        }
+
+        function showSlides(index, slideshowIndex) {
+            const slides = slideshows[slideshowIndex].querySelectorAll(".slide");
+            if (index >= slides.length) slideIndexes[slideshowIndex] = 0;
+            if (index < 0) slideIndexes[slideshowIndex] = slides.length - 1;
+
             slides.forEach((slide, i) => {
                 slide.style.display = i === slideIndexes[slideshowIndex] ? "block" : "none";
             });
         }
+
+        // Gestion de la Lightbox
+        function collectImages() {
+            images = Array.from(document.querySelectorAll(".zoomable"));
+        }
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            lightboxImage.src = images[currentImageIndex].src;
+            lightbox.style.display = "flex";
+        }
+
+        function closeLightboxMode() {
+            lightbox.style.display = "none";
+        }
+
+        function navigateLightbox(direction) {
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            lightboxImage.src = images[currentImageIndex].src;
+        }
+
+        function initializeLightbox() {
+            closeLightbox.addEventListener("click", closeLightboxMode);
+            prevLightbox.addEventListener("click", () => navigateLightbox(-1));
+            nextLightbox.addEventListener("click", () => navigateLightbox(1));
+
+            images.forEach((img, index) => {
+                img.addEventListener("click", () => openLightbox(index));
+            });
+        }
+
+        // Initialisation
+        document.addEventListener("DOMContentLoaded", () => {
+            collectImages();
+            initializeSlideshows();
+            initializeLightbox();
+        });
+
     </script>
+
+    <!-- Lightbox pour le zoom -->
+    <div id="lightbox" class="lightbox">
+        <span id="close-lightbox" class="close-btn">&times;</span>
+        <img id="lightbox-image" src="" alt="Zoomed Image">
+        <a id="prev-lightbox" class="lightbox-nav">&#10094;</a>
+        <a id="next-lightbox" class="lightbox-nav">&#10095;</a>
+    </div>
 
 </body>
 </html>
