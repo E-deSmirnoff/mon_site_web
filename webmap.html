@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WebMap</title>
+        <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="Map.css">
+    </head>
+    
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Emmanuel de Smirnoff</a>
+        <nav class="navbar">
+            <a href="index.html">Accueil</a>
+            <a href="webmap.html" class="active">WebMap</a>
+            <a href="cartes.html">Portfolio</a>
+            <a href="MesCompetences.html">CV</a>
+        </nav>
+    </header>
+
+    <div id="container">
+        <div id="map"></div>
+        <div id="sidebar">
+            <h3>Contrôle des couches</h3>
+            <label><input type="checkbox" id="toggleRoutes" checked> Routes</label><br>
+            <label><input type="checkbox" id="toggleHydrologie" checked> Hydrologie</label><br>
+            <label><input type="checkbox" id="toggleBatiments" checked> Bâtiments</label><br>
+            <label><input type="checkbox" id="toggleVelos" checked> Stations Vélo</label><br>
+    
+            <h3>Changer le fond de carte</h3>
+            <select id="style-selector">
+                <option value="mapbox://styles/mapbox/streets-v11">Streets</option>
+                <option value="mapbox://styles/mapbox/dark-v10">Dark</option>
+                <option value="mapbox://styles/mapbox/satellite-v9">Satellite</option>
+                <option value="mapbox://styles/mapbox/outdoors-v11">Outdoors</option>
+                <option value="https://openmaptiles.geo.data.gouv.fr/styles/positron/style.json">Positron</option>
+                <option value="https://openmaptiles.geo.data.gouv.fr/styles/osm-openmaptiles/style.json">OSM</option>
+                <option value="https://openmaptiles.geo.data.gouv.fr/styles/maptiler-toner/style.json">Toner</option>
+            </select>
+        </div>
+    </div>
+    
+    
+    
+
+
+    <script src="script.js"></script>
+</body>
+</html>
